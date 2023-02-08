@@ -1,13 +1,15 @@
 import { Empty, Layout } from "antd";
-import { Content } from "antd/es/layout/layout";
+import { NextPage } from "next";
 
-export default function OfflinePartyPage() {
+const { Content } = Layout;
+
+const OfflinePartyPage: NextPage = () => {
   return (
     <>
       <Layout className="pageLayout">
         <Content className="pageContent">
           <Layout
-            id="abount"
+            id="offline-party"
             className="pageLayout subLayout"
             style={{ marginTop: "3rem" }}
           >
@@ -18,3 +20,5 @@ export default function OfflinePartyPage() {
     </>
   );
 }
+
+export default OfflinePartyPage;

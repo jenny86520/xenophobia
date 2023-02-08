@@ -1,13 +1,15 @@
 import { Empty, Layout } from "antd";
-import { Content } from "antd/es/layout/layout";
+import { NextPage } from "next";
 
-export default function GraffitiWallPage() {
+const { Content } = Layout;
+
+const GraffitiWallPage: NextPage = () => {
   return (
     <>
       <Layout className="pageLayout">
         <Content className="pageContent">
           <Layout
-            id="abount"
+            id="graffitiWall"
             className="pageLayout subLayout"
             style={{ marginTop: "3rem" }}
           >
@@ -17,4 +19,6 @@ export default function GraffitiWallPage() {
       </Layout>
     </>
   );
-}
+};
+
+export default GraffitiWallPage;

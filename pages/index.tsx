@@ -1,8 +1,8 @@
 import { Button, Card, Col, Layout, Row, Typography } from "antd";
 import { CoffeeOutlined, GlobalOutlined } from "@ant-design/icons";
-import { Content } from "antd/lib/layout/layout";
 import Link from "next/link";
 const { Title } = Typography;
+const { Content } = Layout;
 
 export default function Home() {
   const About = () => (
