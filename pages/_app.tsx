@@ -10,7 +10,10 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>XenoPhobiA</title>
-        <meta name="description" content="XPA main website" />
+        <meta
+          name="description"
+          content="XPA main website. Game players center."
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -18,18 +21,17 @@ export default function App({ Component, pageProps }: AppProps) {
         {/* <BackTop /> */}
         <MainMenu />
         <Component {...pageProps} />
+        <footer className={styles.footer}>
+          <a
+            href="mailto: xpagchannel@gmail.com"
+            target="_blank"
+            rel="team mail noreferrer"
+          >
+            <MailOutlined title="Team Mail" style={{ marginRight: "1vw" }} />
+            xpagchannel@gmail.com
+          </a>
+        </footer>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="mailto: xpagchannel@gmail.com"
-          target="_blank"
-          rel="team mail noreferrer"
-        >
-          <MailOutlined title="Team Mail" style={{ marginRight: "1vw" }} />
-          xpagchannel@gmail.com
-        </a>
-      </footer>
     </>
   );
 }
