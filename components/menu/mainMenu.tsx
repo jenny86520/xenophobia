@@ -1,5 +1,10 @@
 import { Affix, Badge, Menu } from "antd";
-import { FormatPainterOutlined } from "@ant-design/icons";
+import {
+  GlobalOutlined,
+  CoffeeOutlined,
+  FormatPainterOutlined,
+  LoginOutlined,
+} from "@ant-design/icons";
 import Link from "next/link";
 import { Header } from "antd/lib/layout/layout";
 
@@ -9,7 +14,6 @@ export const MainMenu = () => {
   return (
     <Affix style={{ marginBottom: "-3rem", zIndex: 1 }}>
       <Header className="header">
-        <div className="logo" />
         <Menu
           theme="dark"
           onClick={() => {
@@ -18,26 +22,37 @@ export const MainMenu = () => {
           mode="horizontal"
           selectedKeys={menuSelectKeys}
           className="menu"
+          style={{ justifyContent: "center" }}
         >
-           <Menu.Item key="home" id="homeBtn">
+          <Menu.Item key="home" id="homeBtn">
             <Link href="/">LOGO</Link>
           </Menu.Item>
           <Menu.Item key="about" id="aboutBtn">
             <Link href="/about">XPA Team</Link>
           </Menu.Item>
-          <Menu.Item key="onlineParty" id="onlinePartyBtn">
-            <Link href="/online-party">
-              <Badge status="error" text=" " />Online Party
-            </Link>
+          <Menu.Item
+            key="onlineParty"
+            id="onlinePartyBtn"
+            icon={<GlobalOutlined />}
+          >
+            <Link href="/online-party">Online Party</Link>
           </Menu.Item>
-          <Menu.Item key="offlineParty" id="offlinePartyBtn">
-            <Link href="/offline-party">
-              <Badge status="default" text=" " />Offline Party
-            </Link>
+          <Menu.Item
+            key="offlineParty"
+            id="offlinePartyBtn"
+            icon={<CoffeeOutlined />}
+          >
+            <Link href="/offline-party">Offline Party</Link>
           </Menu.Item>
-          <Menu.Item key="graffitiWall" id="graffitiWallBtn">
-            <FormatPainterOutlined />{" "}
+          <Menu.Item
+            key="graffitiWall"
+            id="graffitiWallBtn"
+            icon={<FormatPainterOutlined />}
+          >
             <Link href="/graffiti-wall">Graffiti Wall</Link>
+          </Menu.Item>
+          <Menu.Item key="login" id="loginBtn" icon={<LoginOutlined />} danger>
+            <Link href="/login">Login</Link>
           </Menu.Item>
         </Menu>
       </Header>
