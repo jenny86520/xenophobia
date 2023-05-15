@@ -26,7 +26,7 @@ export const MainMenu = () => {
         >
           <Menu.Item key="home" id="homeBtn">
             <Link href="/">
-              <Avatar src="/logo.png" size={"large"} />
+              <Avatar src="/logo_short.png" size={"large"} />
             </Link>
           </Menu.Item>
           <Menu.Item key="about" id="aboutBtn">
