@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
           content="XPA main website. Game players center."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/logo.png" />
       </Head>
       <main className={styles.main}>
         {/* <BackTop /> */}

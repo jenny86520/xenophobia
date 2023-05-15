@@ -1,4 +1,4 @@
-import { Affix, Badge, Menu } from "antd";
+import { Affix, Avatar, Menu } from "antd";
 import {
   GlobalOutlined,
   CoffeeOutlined,
@@ -25,7 +25,9 @@ export const MainMenu = () => {
           style={{ justifyContent: "center" }}
         >
           <Menu.Item key="home" id="homeBtn">
-            <Link href="/">LOGO</Link>
+            <Link href="/">
+              <Avatar src="/logo.png" size={"large"} />
+            </Link>
           </Menu.Item>
           <Menu.Item key="about" id="aboutBtn">
             <Link href="/about">XPA Team</Link>

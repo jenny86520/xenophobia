@@ -1,4 +1,4 @@
-import { Button, Card, Col, Layout, Row, Typography } from "antd";
+import { Button, Card, Col, Layout, Row, Typography, Image } from "antd";
 import { CoffeeOutlined, GlobalOutlined } from "@ant-design/icons";
 import Link from "next/link";
 const { Title } = Typography;
@@ -7,10 +7,12 @@ const { Content } = Layout;
 export default function Home() {
   const About = () => (
     <Row justify="center">
-      <Col span={22} lg={18}>
+      <Col span={23}>
         <Card>
           <Typography style={{ textAlign: "center" }}>
-            <Title className="title">XPA Team</Title>
+            <Title className="title">
+              <Image src={"/logo.png"} preview={false} />
+            </Title>
             <Title level={3}>Game players center</Title>
             <Title level={4}>Include CS:GO, APEX, and others.</Title>
             <Button>
