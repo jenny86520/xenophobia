@@ -1,13 +1,9 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import Axios from "axios";
+import getConfig from 'next/config'
+// Only holds serverRuntimeConfig and publicRuntimeConfig
+export const { env } = getConfig()
+const axios = Axios.create({
+  baseURL: process.env.NEST_PUBLIC_SERVER_HOST,
+});
 
-type Data = {
-  name: string
-}
-
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  res.status(200).json({ name: 'John Doe' })
-}
+export const getMessage = () => axios.get("1101110");
