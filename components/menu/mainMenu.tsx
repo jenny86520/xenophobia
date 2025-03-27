@@ -11,8 +11,44 @@ import { Header } from "antd/lib/layout/layout";
 export const MainMenu = () => {
   let menuSelectKeys: string[] = [];
 
+  const items = [
+    {
+      label: (
+        <Link href="/">
+          <Avatar src="/logo_short.png" size={"large"} />
+        </Link>
+      ),
+      key: "home",
+    },
+    {
+      label: <Link href="/about">XPA Team</Link>,
+      key: "about",
+    },
+    {
+      label: <Link href="/online-party">Online Party</Link>,
+      key: "onlineParty",
+      icon: <GlobalOutlined />,
+    },
+    {
+      label: <Link href="/offline-party">Offline Party</Link>,
+      key: "offlineParty",
+      icon: <CoffeeOutlined />,
+    },
+    {
+      label: <Link href="/graffiti-wall">Graffiti Wall</Link>,
+      key: "graffitiWall",
+      icon: <FormatPainterOutlined />,
+    },
+    {
+      label: <Link href="/login">Login</Link>,
+      key: "login",
+      icon: <LoginOutlined />,
+      danger: true,
+    },
+  ];
+
   return (
-    <Affix style={{ marginBottom: "-3rem", zIndex: 1 }}>
+    <Affix style={{ marginBottom: "-3rem", zIndex: 2 }}>
       <Header className="header">
         <Menu
           theme="dark"
@@ -23,40 +59,8 @@ export const MainMenu = () => {
           selectedKeys={menuSelectKeys}
           className="menu"
           style={{ justifyContent: "center" }}
-        >
-          <Menu.Item key="home" id="homeBtn">
-            <Link href="/">
-              <Avatar src="/logo_short.png" size={"large"} />
-            </Link>
-          </Menu.Item>
-          <Menu.Item key="about" id="aboutBtn">
-            <Link href="/about">XPA Team</Link>
-          </Menu.Item>
-          <Menu.Item
-            key="onlineParty"
-            id="onlinePartyBtn"
-            icon={<GlobalOutlined />}
-          >
-            <Link href="/online-party">Online Party</Link>
-          </Menu.Item>
-          <Menu.Item
-            key="offlineParty"
-            id="offlinePartyBtn"
-            icon={<CoffeeOutlined />}
-          >
-            <Link href="/offline-party">Offline Party</Link>
-          </Menu.Item>
-          <Menu.Item
-            key="graffitiWall"
-            id="graffitiWallBtn"
-            icon={<FormatPainterOutlined />}
-          >
-            <Link href="/graffiti-wall">Graffiti Wall</Link>
-          </Menu.Item>
-          <Menu.Item key="login" id="loginBtn" icon={<LoginOutlined />} danger>
-            <Link href="/login">Login</Link>
-          </Menu.Item>
-        </Menu>
+          items={items}
+        ></Menu>
       </Header>
     </Affix>
   );

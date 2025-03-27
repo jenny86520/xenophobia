@@ -14,7 +14,7 @@ export default function Home() {
               <Image src={"/logo.png"} preview={false} />
             </Title>
             <Title level={3}>Game players center</Title>
-            <Title level={4}>Include CS:GO, APEX, and others.</Title>
+            <Title level={4}>Include Counter-Strike 2, APEX, and others.</Title>
             <Button>
               <Link href="/about">More...</Link>
             </Button>
