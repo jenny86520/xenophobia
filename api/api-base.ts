@@ -9,5 +9,6 @@ export const getApi = (uri: string, query: any) => {
   const option = {
     method: "GET",
   };
-  return fetch(`${domain}/${uri}?${params}`, option).then((res) => res.json());
+  return fetch('').then(() => []);
+  // TODO: return fetch(`${domain}/${uri}?${params}`, option).then((res) => res.json());
 };
