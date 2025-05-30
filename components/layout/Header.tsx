@@ -22,10 +22,6 @@ const AppHeader: React.FC = () => {
         </Link>
       </div>
 
-      <div className={styles.mobileMenuIcon}>
-        <MenuOutlined />
-      </div>
-
       <Menu
         theme="dark"
         mode="horizontal"
