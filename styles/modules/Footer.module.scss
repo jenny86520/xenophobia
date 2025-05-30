@@ -1,0 +1,19 @@
+.footer {
+  background-color: var(--secondary-color);
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.emailLink {
+  color: #999;
+  transition: color 0.3s;
+  
+  &:hover {
+    color: var(--primary-color);
+  }
+}

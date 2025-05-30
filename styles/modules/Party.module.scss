@@ -1,0 +1,158 @@
+.eventsContainer {
+  padding: 20px;
+}
+
+.searchSection {
+  background: linear-gradient(to right, #141414, #1f1f1f);
+  padding: 30px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.pageTitle {
+  color: white;
+  margin-bottom: 24px;
+  text-align: center;
+  
+  &:after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 16px auto 0;
+  }
+}
+
+.searchForm {
+  margin-bottom: 20px;
+}
+
+.searchInput {
+  border-radius: 4px;
+  height: 46px;
+  
+  &:hover, &:focus {
+    border-color: var(--primary-color);
+  }
+}
+
+.selectFilter {
+  width: 100%;
+  border-radius: 4px;
+  
+  &:hover, &:focus {
+    border-color: var(--primary-color);
+  }
+}
+
+.searchButton {
+  width: 100%;
+  height: 46px;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  
+  &:hover, &:focus {
+    background-color: darken(#E50914, 10%);
+    border-color: darken(#E50914, 10%);
+  }
+}
+
+.filterTags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.resetButton {
+  color: var(--primary-color);
+  
+  &:hover {
+    color: darken(#E50914, 10%);
+  }
+}
+
+.eventsGrid {
+  margin-top: 40px;
+}
+
+.eventCard {
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.eventCoverContainer {
+  position: relative;
+  height: 200px;
+}
+
+.eventImagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background-color: #2a2a2a;
+  background-image: url('/event-placeholder.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.eventCoverOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.eventTags {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+}
+
+.eventTitle {
+  color: white;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.eventMeta {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+}
+
+.eventContent {
+  padding: 16px;
+}
+
+.eventDescription {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 16px;
+}
+
+.eventFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}

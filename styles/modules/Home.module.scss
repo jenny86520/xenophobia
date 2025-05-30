@@ -1,0 +1,140 @@
+.hero {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 60px 0;
+  text-align: center;
+  margin-bottom: 40px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.heroContent {
+  max-width: 800px;
+  margin: 0 auto;
+  
+  h1 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+  }
+}
+
+.redLetter {
+  color: #E50914;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+}
+
+.heroDescription {
+  font-size: 1.2rem;
+  margin-bottom: 24px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.countdownContainer {
+  margin-top: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  padding: 16px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid rgba(229, 9, 20, 0.3);
+}
+
+.countdownHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  color: white;
+  font-size: 1.1rem;
+  justify-content: center;
+}
+
+.countdownTimers {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.countdownItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 60px;
+}
+
+.countdownValue {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  padding: 8px 12px;
+  min-width: 60px;
+  text-align: center;
+}
+
+.countdownLabel {
+  margin-top: 8px;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  
+  &:after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 16px auto 0;
+  }
+}
+
+.featureCard {
+  height: 100%;
+  text-align: center;
+  transition: transform 0.3s;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.eventCard {
+  height: 100%;
+  
+  .ant-card-meta-title {
+    color: var(--primary-color);
+  }
+}
+
+.eventImagePlaceholder {
+  height: 200px;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+}
+
+.eventMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.viewMoreContainer {
+  text-align: center;
+  margin-top: 40px;
+}
