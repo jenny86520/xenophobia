@@ -1,0 +1,136 @@
+:root {
+  --primary-color: #FF3040; /* 增亮的紅色 */
+  --secondary-color: #1A1A1A; /* 深黑色，稍微亮一點 */
+  --text-color: #F0F0F0; /* 非純白色文字，減少眼睛疲勞 */
+  --light-text: #FFFFFF;
+  --dim-text: rgba(255, 255, 255, 0.85); /* 次要文字顏色 */
+  --background-color: #121212; /* 深黑色背景 */
+  --card-background: #252525; /* 更亮的卡片背景 */
+  --border-color: #444444; /* 更亮的邊框顏色 */
+  --hover-color: #333333; /* 懸停時的背景顏色 */
+  --success-color: #4CAF50; /* 更亮的成功顏色 */
+  --warning-color: #FF9800; /* 更亮的警告顏色 */
+  --error-color: #FF5252; /* 更亮的錯誤顏色 */
+  --link-color: #64B5F6; /* 鏈接顏色 */
+  --link-hover-color: #90CAF9; /* 鏈接懸停顏色 */
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+/* 全站紅色卷軸樣式 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+  
+  &:hover {
+    background: darken(#FF3040, 10%);
+  }
+}
+
+/* Firefox 卷軸樣式 */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) rgba(0, 0, 0, 0.2);
+}
+
+.section {
+  margin-bottom: 60px;
+}
+
+.primaryIcon {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+}
+
+.primaryIconL {
+  color: var(--primary-color);
+  font-size: 3rem;
+}
+
+// a {
+//   color: var(--link-color);
+//   text-decoration: none;
+//   transition: color 0.2s ease;
+  
+//   &:hover {
+//     color: var(--link-hover-color);
+//     text-decoration: underline;
+//   }
+// }
+
+// .container {
+//   max-width: 1200px;
+//   margin: 0 auto;
+//   padding: 0 1rem;
+// }
+
+// .page-header {
+//   margin-bottom: 2rem;
+//   h1 {
+//     font-size: 2rem;
+//     color: var(--primary-color);
+//   }
+// }
+
+// .card {
+//   background-color: var(--card-background);
+//   border-radius: 8px;
+//   border: 1px solid var(--border-color);
+//   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+//   padding: 1.5rem;
+//   margin-bottom: 1.5rem;
+//   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+//   &:hover {
+//     transform: translateY(-2px);
+//     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+//   }
+// }
+
+// .btn-primary {
+//   background-color: var(--primary-color);
+//   color: white;
+//   border: none;
+//   padding: 0.5rem 1.2rem;
+//   border-radius: 4px;
+//   cursor: pointer;
+//   font-weight: 600;
+//   transition: all 0.3s ease;
+//   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+//   &:hover {
+//     background-color: lighten(#FF3040, 5%);
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+//     transform: translateY(-1px);
+//   }
+  
+//   &:active {
+//     transform: translateY(1px);
+//     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+//   }
+// }

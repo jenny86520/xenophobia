@@ -1,0 +1,14 @@
+.layout {
+  min-height: 100vh;
+}
+
+.content {
+  padding-top: 64px; // 頁眉高度
+  min-height: calc(100vh - 64px - 70px); // 減去頁眉和頁腳高度
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
