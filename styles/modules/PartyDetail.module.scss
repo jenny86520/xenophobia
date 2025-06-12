@@ -1,0 +1,133 @@
+.eventHeader {
+  margin-bottom: 40px;
+}
+
+.eventBanner {
+  position: relative;
+  height: 300px;
+  background-color: #2a2a2a;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/event-banner.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.eventBannerContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+}
+
+.eventTypeTag {
+  margin-bottom: 16px;
+  font-size: 1rem;
+}
+
+.eventTitle {
+  color: white;
+  margin-bottom: 16px;
+}
+
+.eventMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.eventMetaItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.eventActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 24px;
+}
+
+.registerButton {
+  min-width: 120px;
+}
+
+.registerButton {
+  height: 46px;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  
+  &:hover, &:focus {
+    background-color: darken(#E50914, 10%);
+    border-color: darken(#E50914, 10%);
+  }
+}
+
+.eventContent {
+  background-color: #1f1f1f;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.subEventContent{
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.competitorCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  
+  h4 {
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  
+  p {
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.65);
+  }
+}
+
+.competitorAvatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #1890ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: white;
+}
+
+.noCompetitors {
+  text-align: center;
+  padding: 40px 0;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.actionRequired {
+  margin-top: 24px;
+  
+  .loginPrompt, .registerPrompt {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+    padding: 20px;
+    background-color: rgba(229, 9, 20, 0.05);
+    border-radius: 8px;
+    border-left: 4px solid #E50914;
+  }
+  
+  .competitorsPreview {
+    margin-top: 24px;
+  }
+}

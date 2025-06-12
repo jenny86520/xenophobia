@@ -58,6 +58,13 @@ body {
   scrollbar-color: var(--primary-color) rgba(0, 0, 0, 0.2);
 }
 
+/* 按鈕樣式 */
+.bottomBtn {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* 其他 */
 .section {
   margin-bottom: 60px;
 }
@@ -70,6 +77,14 @@ body {
 .primaryIconL {
   color: var(--primary-color);
   font-size: 3rem;
+}
+
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
 }
 
 // a {

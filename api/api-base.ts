@@ -1,5 +1,5 @@
 // TODO: 統一api
-export const getApi = (uri: string, query: any) => {
+export const getApi = (uri: string, query: any = {}) => {
   const domain = process.env.NEXT_PUBLIC_API_URL;
   if (!domain) {
     throw Error("NEXT_PUBLIC_API_URL not found");
@@ -9,6 +9,6 @@ export const getApi = (uri: string, query: any) => {
   const option = {
     method: "GET",
   };
-  return fetch('').then(() => []);
-  // TODO: return fetch(`${domain}/${uri}?${params}`, option).then((res) => res.json());
+  // return fetch('').then(() => []);
+  return fetch(`${domain}/${uri}?${params}`, option).then((res) => res.json());
 };

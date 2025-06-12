@@ -2,9 +2,9 @@ import { PartyQuery } from "@/interfaces/party";
 import { getApi } from "./api-base";
 
 export const getParties = (query: PartyQuery) => {
-  return getApi("party/main", query);
+  return getApi("party", query);
 };
 
-export const getParty = (query: PartyQuery) => {
-  return getApi("party/detail", query);
+export const getParty = (id: string) => {
+  return getApi(`party/${id}`);
 };

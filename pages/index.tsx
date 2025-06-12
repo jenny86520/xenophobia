@@ -12,6 +12,7 @@ import moment from "moment";
 const { Title, Paragraph } = Typography;
 import MainLayout from "@/components/layout/MainLayout";
 import styles from "@/styles/modules/Home.module.scss";
+import { formatDate } from "@/utils/utils";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
@@ -23,22 +24,22 @@ export default function Home() {
   }>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [parties, setParties] = useState<any>([]);
 
-  useEffect(() => {
-    const fetchParties = async () => {
-      try {
-        setLoading(true);
-        await getParties({
-          partyStatus: "release",
-        }).then((result) => {
-          setParties(result);
-        });
-      } catch (error) {
-        console.error("Failed to fetch parties:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchParties = async () => {
+    try {
+      setLoading(true);
+      await getParties({
+        partyStatus: "release",
+      }).then((result) => {
+        setParties(result);
+      });
+    } catch (error) {
+      console.error("Failed to fetch parties:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchParties();
   }, []);
 
@@ -48,8 +49,8 @@ export default function Home() {
 
     const calculateCountdown = () => {
       const now = moment();
-      const eventDate = moment(parties[0].startDate);
-      const diff = eventDate.diff(now);
+      const startDate = moment(parties[0].startDate);
+      const diff = startDate.diff(now);
 
       if (diff <= 0) {
         setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -87,7 +88,7 @@ export default function Home() {
           />
           <span>Latest party is coming soon:</span>
           <Link
-            href={`/events/${parties[0]._id}`}
+            href={`/party/${parties[0]._id}`}
             style={{ marginLeft: "8px", color: "#E50914" }}
           >
             {parties[0].title}
@@ -189,7 +190,8 @@ export default function Home() {
                 <Card.Meta title={party.title} description={party.content} />
                 <div className={styles.eventMeta}>
                   <span>
-                    {party.startDate} - {party.endDate}
+                    <CalendarOutlined /> {formatDate(party.startDate)} -{" "}
+                    {formatDate(party.endDate)}
                   </span>
                   <Link href={`/party/${party._id}`}>
                     <Button type="primary" size="small">
@@ -207,7 +209,7 @@ export default function Home() {
         )}
       </Row>
 
-      <div className={styles.viewMoreContainer}>
+      <div className="bottomBtn">
         <Link href="/party">
           <Button type="default" size="large">
             More Party

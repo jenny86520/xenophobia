@@ -1,35 +1,35 @@
+import { DateType, PartyType, SignUpStatus } from "@/enums/party.enum";
+import { User } from "./user";
+
 export interface PartyQuery {
   title?: string;
   partyStatus?: string;
   partyType?: string;
 }
 
-// 活動相關類型
 export interface Party {
   _id: string;
+  partyType: PartyType;
+  signUpStatus: SignUpStatus;
+  dateType: DateType;
+  startDate?: string;
+  endDate?: string;
   title: string;
-  description: string;
-  startDate: string;
-  endDate: string;
-  location: string;
-  isOnline: boolean;
-  capacity: number;
-  registeredUsers: string[];
-  imageUrl?: string;
+  content?: string;
+  site?: string;
+  address?: string;
+  registeredUsers?: User[];
+
   subParties: SubParty[];
-  createdAt: string;
-  updatedAt: string;
 }
 
 export interface SubParty {
   _id: string;
+  startDate?: string;
+  endDate?: string;
   title: string;
-  description: string;
-  startDate: string;
-  endDate: string;
-  capacity: number;
-  registeredUsers: string[];
-  event: string;
-  createdAt: string;
-  updatedAt: string;
+  content?: string;
+  site?: string;
+  address?: string;
+  registeredUsers?: User[];
 }
