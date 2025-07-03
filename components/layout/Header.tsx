@@ -14,6 +14,38 @@ const { Header } = Layout;
 const AppHeader: React.FC = () => {
   const router = useRouter();
 
+  const items = [
+    {
+      label: (
+        <Link href="/">
+          <span>
+            <HomeOutlined /> Home
+          </span>
+        </Link>
+      ),
+      key: "/",
+    },
+    {
+      label: (
+        <Link href="/party">
+          <span>
+            <CalendarOutlined /> Party
+          </span>
+        </Link>
+      ),
+      key: "/party",
+    },
+    {
+      label: (
+        <Link href="/about">
+          <span>
+            <InfoCircleOutlined /> About
+          </span>
+        </Link>
+      ),
+      key: "/about",
+    },
+  ];
   return (
     <Header className={styles.header}>
       <div className={styles.logo}>
@@ -27,36 +59,8 @@ const AppHeader: React.FC = () => {
         mode="horizontal"
         selectedKeys={[router.pathname]}
         className={styles.menu}
-      >
-        <Menu.Item key="/">
-          <Link href="/">
-            <span>
-              <HomeOutlined /> Home
-            </span>
-          </Link>
-        </Menu.Item>
-        <Menu.Item key="/party">
-          <Link href="/party">
-            <span>
-              <CalendarOutlined /> Party
-            </span>
-          </Link>
-        </Menu.Item>
-        {/* <Menu.Item key="/shop">
-          <Link href="/shop">
-            <span>
-              <ShoppingOutlined /> Shop
-            </span>
-          </Link>
-        </Menu.Item> */}
-        <Menu.Item key="/about">
-          <Link href="/about">
-            <span>
-              <InfoCircleOutlined /> About
-            </span>
-          </Link>
-        </Menu.Item>
-      </Menu>
+        items={items}
+      ></Menu>
     </Header>
   );
 };

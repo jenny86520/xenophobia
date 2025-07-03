@@ -20,22 +20,13 @@
   flex: 1;
   background-color: transparent;
   border-bottom: none;
-  
+
   :global(.ant-menu-item) {
     color: var(--text-color);
     font-weight: 500;
-    
+
     &:hover {
-      color: var(--primary-color);
-    }
-    
-    &:global(.ant-menu-item-selected) {
-      color: var(--primary-color);
-      font-weight: 600;
-      
-      &::after {
-        border-bottom-color: var(--primary-color);
-      }
+      color: var(--primary-color) !important;
     }
   }
 }

@@ -30,10 +30,25 @@ const customTheme = {
   },
   components: {
     Menu: {
+      // 共通樣式
+      itemColor: "var(--text-color)",
+      itemFontWeight: 500,
+      itemHoverColor: "var(--primary-color)",
+      itemSelectedColor: "var(--primary-color)",
+      itemSelectedFontWeight: 600,
+      darkItemSelectedColor: "var(--primary-color)",
+      darkItemSelectedFontWeight: 600,
+
+      // 如果是 horizontal menu，模擬 border-bottom 效果
+      horizontalItemSelectedBorderBottom: "2px solid var(--primary-color)",
+
+      // 背景設為 transparent
+      itemBg: "transparent",
+      itemSelectedBg: "transparent",
+      itemHoverBg: "rgba(255, 255, 255, 0.05)",
       darkItemBg: "transparent",
-      darkItemHoverBg: "rgba(255, 255, 255, 0.05)",
       darkItemSelectedBg: "transparent",
-      darkItemSelectedColor: "#FF3040",
+      darkItemHoverBg: "rgba(255, 255, 255, 0.05)",
     },
     Card: {
       colorBgContainer: "#252525",
