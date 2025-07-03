@@ -42,6 +42,7 @@ export default function EventDetailPage() {
 
   const [party, setParty] = useState<Party | null>(null);
   const [competitors, setCompetitors] = useState<Competitor[]>([]);
+  const [items, setItems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -49,6 +50,12 @@ export default function EventDetailPage() {
       fetchPartyDetail();
     }
   }, [id]);
+
+  useEffect(() => {
+    if (!!party) {
+      setTabs();
+    }
+  }, [party, competitors]);
 
   const fetchPartyDetail = async () => {
     setLoading(true);
@@ -61,12 +68,149 @@ export default function EventDetailPage() {
         const competitorsData = await getCompetitors({ partyId: id as string });
         setCompetitors(competitorsData);
       }
+
     } catch (error) {
       console.error("Failed to fetch party detail:", error);
       message.error("獲取派對詳情失敗");
     } finally {
       setLoading(false);
     }
+  };
+
+  const setTabs = () => {
+    setItems([
+      {
+        key: "details",
+        label: "派對詳情",
+        icon: "",
+        children: (
+          <>
+            <Descriptions
+              bordered
+              column={{ xxl: 2, xl: 2, lg: 2, md: 2, sm: 1, xs: 1 }}
+            >
+              <Descriptions.Item label="派對類型">
+                {upperCaseFirstChat(party?.partyType)}
+              </Descriptions.Item>
+              <Descriptions.Item label="時間類型">
+                {party?.dateType === DateType.fixed ? "已定" : "暫定"}
+              </Descriptions.Item>
+              <Descriptions.Item label="開始日期">
+                {formatDate(party?.startDate)}
+              </Descriptions.Item>
+              <Descriptions.Item label="結束日期">
+                {formatDate(party?.endDate)}
+              </Descriptions.Item>
+              <Descriptions.Item label="派對地點">
+                {party?.address}
+              </Descriptions.Item>
+              <Descriptions.Item label="報名人員">
+                {party?.registeredUsers && party.registeredUsers.length > 0
+                  ? party?.registeredUsers?.map((user) => user.nickName)
+                  : ""}
+              </Descriptions.Item>
+            </Descriptions>
+            <Divider />
+            <Title level={3}>Introduce</Title>
+            <Paragraph>{party?.content}</Paragraph>
+            {party?.subParties && party.subParties.length > 0 ? (
+              <>
+                <Divider />
+                <Title level={3}>Schedule</Title>
+                {party?.subParties.map((subParty) => (
+                  <div className={styles.subEventContent} key={subParty._id}>
+                    <Card>
+                      <Title level={4} className={styles.eventTitle}>
+                        {subParty.title}
+                      </Title>
+                      <Paragraph>
+                        {subParty.content}
+                        <CalendarOutlined />
+                        {`${formatDate(subParty.startDate)} - ${formatDate(
+                          subParty.endDate
+                        )}`}
+                      </Paragraph>
+                      <div className={style_party.eventFooter}>
+                        <div className={style_party.eventLocation}>
+                          <EnvironmentOutlined /> {subParty.site || "代定"}
+                          {` ${subParty.address}` || ""}
+                        </div>
+                        {/* <div className={style_party.eventCapacity}>
+                              <Button
+                                type="primary"
+                                size="small"
+                                disabled={
+                                  party.signUpStatus === SignUpStatus.close
+                                }
+                              >
+                                報名
+                              </Button>
+                            </div> */}
+                      </div>
+                    </Card>
+                  </div>
+                ))}
+              </>
+            ) : (
+              <></>
+            )}
+          </>
+        ),
+      },
+      {
+        key: "competitors",
+        label: "參賽者",
+        icon: <TrophyOutlined />,
+        children: (
+          <div className={styles.competitorsSection}>
+            <div className={styles.bettingIntro}>
+              <Paragraph>
+                為您看好的參賽者下注，預測比賽結果，贏取豐厚點數獎勵。
+                賽事結束後，根據賽果自動結算獎勵，敬請期待！
+              </Paragraph>
+            </div>
+
+            {competitors.length > 0 ? (
+              <div className={styles.bettingContent}>
+                <div className={styles.actionRequired}>
+                  <Divider>參賽者列表</Divider>
+                  <Row gutter={[24, 24]}>
+                    {competitors.map((competitor) => (
+                      <Col xs={24} sm={12} md={8} key={competitor._id}>
+                        <Card hoverable className={styles.competitorCard}>
+                          <div className={styles.competitorAvatar}>
+                            <UserOutlined />
+                          </div>
+                          <div className={styles.competitorInfo}>
+                            <Title level={4}>{competitor.name}</Title>
+                            <p>
+                              <Tag
+                                color="#E50914"
+                                style={{
+                                  fontWeight: "bold",
+                                  fontSize: "14px",
+                                }}
+                              >
+                                賠率：{competitor.odds}
+                              </Tag>
+                            </p>
+                            <p>描述: {competitor.description}</p>
+                          </div>
+                        </Card>
+                      </Col>
+                    ))}
+                  </Row>
+                </div>
+              </div>
+            ) : (
+              <div className={styles.noCompetitors}>
+                <Paragraph>暫無參賽者資訊</Paragraph>
+              </div>
+            )}
+          </div>
+        ),
+      },
+    ]);
   };
 
   if (loading) {
@@ -146,131 +290,7 @@ export default function EventDetailPage() {
       </div>
 
       <div className={styles.eventContent}>
-        <Tabs defaultActiveKey="details">
-          <TabPane tab="派對詳情" key="details">
-            <Descriptions
-              bordered
-              column={{ xxl: 2, xl: 2, lg: 2, md: 2, sm: 1, xs: 1 }}
-            >
-              <Descriptions.Item label="派對類型">
-                {upperCaseFirstChat(party?.partyType)}
-              </Descriptions.Item>
-              <Descriptions.Item label="時間類型">
-                {party?.dateType === DateType.fixed ? "已定" : "暫定"}
-              </Descriptions.Item>
-              <Descriptions.Item label="開始日期">
-                {formatDate(party?.startDate)}
-              </Descriptions.Item>
-              <Descriptions.Item label="結束日期">
-                {formatDate(party?.endDate)}
-              </Descriptions.Item>
-              <Descriptions.Item label="派對地點">
-                {party?.address}
-              </Descriptions.Item>
-              <Descriptions.Item label="報名人員">
-                {party?.registeredUsers && party.registeredUsers.length > 0
-                  ? party?.registeredUsers?.map((user) => user.nickName)
-                  : ""}
-              </Descriptions.Item>
-            </Descriptions>
-
-            <Divider />
-            <Title level={3}>Introduce</Title>
-
-            <Paragraph>{party?.content}</Paragraph>
-
-            {party?.subParties && party.subParties.length > 0 ? (
-              <>
-                <Divider />
-                <Title level={3}>Schedule</Title>
-                {party?.subParties.map((subParty) => (
-                  <div className={styles.subEventContent} key={subParty._id}>
-                    <Card>
-                      <Title level={4} className={styles.eventTitle}>
-                        {subParty.title}
-                      </Title>
-                      <Paragraph>
-                        {subParty.content}
-                        <CalendarOutlined />
-                        {`${formatDate(subParty.startDate)} - ${formatDate(
-                          subParty.endDate
-                        )}`}
-                      </Paragraph>
-                      <div className={style_party.eventFooter}>
-                        <div className={style_party.eventLocation}>
-                          <EnvironmentOutlined /> {subParty.site || "代定"}
-                          {` ${subParty.address}` || ""}
-                        </div>
-                        {/* <div className={style_party.eventCapacity}>
-                              <Button
-                                type="primary"
-                                size="small"
-                                disabled={
-                                  party.signUpStatus === SignUpStatus.close
-                                }
-                              >
-                                報名
-                              </Button>
-                            </div> */}
-                      </div>
-                    </Card>
-                  </div>
-                ))}
-              </>
-            ) : (
-              <></>
-            )}
-          </TabPane>
-
-          <TabPane icon={<TrophyOutlined />} tab="參賽者" key="competitors">
-            <div className={styles.competitorsSection}>
-              <div className={styles.bettingIntro}>
-                <Paragraph>
-                  為您看好的參賽者下注，預測比賽結果，贏取豐厚點數獎勵。
-                  賽事結束後，根據賽果自動結算獎勵，敬請期待！
-                </Paragraph>
-              </div>
-
-              {competitors.length > 0 ? (
-                <div className={styles.bettingContent}>
-                  <div className={styles.actionRequired}>
-                    <Divider>參賽者列表</Divider>
-                    <Row gutter={[24, 24]}>
-                      {competitors.map((competitor) => (
-                        <Col xs={24} sm={12} md={8} key={competitor._id}>
-                          <Card hoverable className={styles.competitorCard}>
-                            <div className={styles.competitorAvatar}>
-                              <UserOutlined />
-                            </div>
-                            <div className={styles.competitorInfo}>
-                              <Title level={4}>{competitor.name}</Title>
-                              <p>
-                                <Tag
-                                  color="#E50914"
-                                  style={{
-                                    fontWeight: "bold",
-                                    fontSize: "14px",
-                                  }}
-                                >
-                                  賠率：{competitor.odds}
-                                </Tag>
-                              </p>
-                              <p>描述: {competitor.description}</p>
-                            </div>
-                          </Card>
-                        </Col>
-                      ))}
-                    </Row>
-                  </div>
-                </div>
-              ) : (
-                <div className={styles.noCompetitors}>
-                  <Paragraph>暫無參賽者資訊</Paragraph>
-                </div>
-              )}
-            </div>
-          </TabPane>
-        </Tabs>
+        <Tabs defaultActiveKey="details" items={items}></Tabs>
       </div>
       <div className="bottomBtn">
         <Button
