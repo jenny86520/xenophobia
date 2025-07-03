@@ -98,7 +98,9 @@ export default function PartyPage() {
                 >
                   <Option value="">All</Option>
                   {Object.keys(PartyType).map((type) => (
-                    <Option value={type}>{upperCaseFirstChat(type)}</Option>
+                    <Option value={type} key={type}>
+                      {upperCaseFirstChat(type)}
+                    </Option>
                   ))}
                 </Select>
               </Col>
